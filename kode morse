@@ -1,0 +1,38 @@
+import winsound
+import time
+
+# Kode Morse
+morse = {
+    'A': '.-',    'B': '-...',  'C': '-.-.',  'D': '-..',
+    'E': '.',     'F': '..-.',  'G': '--.',   'H': '....',
+    'I': '..',    'J': '.---',  'K': '-.-',   'L': '.-..',
+    'M': '--',    'N': '-.',    'O': '---',   'P': '.--.',
+    'Q': '--.-',  'R': '.-.',   'S': '...',   'T': '-',
+    'U': '..-',   'V': '...-',  'W': '.--',   'X': '-..-',
+    'Y': '-.--',  'Z': '--..'
+}
+
+# Memasukkan nama
+nama = input("Masukkan nama kamu: ").upper()
+
+print("Kode Morse:", end=" ")
+
+# Mengubah nama menjadi Morse
+for huruf in nama:
+    if huruf in morse:
+        kode = morse[huruf]
+        print(kode, end=" ")
+
+        # Mengubah Morse menjadi suara
+        for simbol in kode:
+            if simbol == '.':
+                winsound.Beep(1000, 150)  # titik
+            elif simbol == '-':
+                winsound.Beep(1000, 450)  # garis
+
+            time.sleep(0.1)
+
+        # Jeda antar huruf
+        time.sleep(0.3)
+
+print()
